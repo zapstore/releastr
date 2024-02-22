@@ -16,10 +16,6 @@ void main() async {
   final notifier = FrameNotifier();
   await notifier.initialize('wss://relay.damus.io');
 
-  router.get('/', (Request request) async {
-    return Response.ok('ok');
-  });
-
   router.post('/publish', (Request request) async {
     final body = await request.readAsString();
     final map = jsonDecode(body) as Map<String, dynamic>;
@@ -73,7 +69,7 @@ void main() async {
   });
 
   router.mount(
-      '/', createStaticHandler('webapp/', defaultDocument: 'index.html'));
+      '/', createStaticHandler('web/dist/', defaultDocument: 'index.html'));
 
   final cors = corsHeaders();
 
