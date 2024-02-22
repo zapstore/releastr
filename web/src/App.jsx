@@ -13,7 +13,7 @@ function App() {
 
   const [artifactUrl, setArtifactUrl] = createSignal('');
   const [artifactDescription, setArtifactDescription] = createSignal('');
-  const [artifactIcon, setArtifactIcon] = createSignal('');
+  const [releaseImage, setReleaseImage] = createSignal('');
   const [artifactRepository, setArtifactRepository] = createSignal('');
   const [artifactTags, setArtifactTags] = createSignal([]);
   const [artifactEvent, setArtifactEvent] = createSignal(null);
@@ -23,6 +23,7 @@ function App() {
       ["i", appIdentifier()],
       ["title", appName()],
       ['version', releaseVersion()],
+      ["image", releaseImage()],
     ];
 
     const a = {
@@ -144,9 +145,8 @@ function App() {
         </pre>
 
         <Show when={!artifactButtonDisabled()}>
-          <p>Manually verify the hash before signing!<br/>
-            <code>curl -sL "{artifactUrl()}" -o - | shasum -a 2
-    56`</code>
+          <p>Manually verify the hash before signing!<br/><br/>
+            <code>curl -sL "{artifactUrl()}" -o - | shasum -a 256`</code>
           </p>
         </Show>
         <button class={styles.submit} disabled={artifactButtonDisabled()} onclick={signArtifact}>Sign artifact</button>
@@ -191,9 +191,9 @@ function App() {
         <div class={styles.part}>
           Icon URL: <input
             type="text"
-            value={artifactIcon()}
-            onInput={(e) => setArtifactIcon(e.target.value)}
-          /> <button>Fetch</button>
+            value={releaseImage()}
+            onInput={(e) => setReleaseImage(e.target.value)}
+          />
         </div>
 
         <div class={styles.part}>
