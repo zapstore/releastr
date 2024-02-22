@@ -33,10 +33,10 @@ function App() {
       tags
     };
     if (artifactEvent()) {
-      a.tags = [...tags, ['e', artifactEvent().id]];
+      a.tags = [...a.tags, ['e', artifactEvent().id]];
     }
     if (appIdentifier() && releaseVersion()) {
-      a.tags = [...tags, ["d", `${appIdentifier()}@${releaseVersion()}`]];
+      a.tags = [...a.tags, ["d", `${appIdentifier()}@${releaseVersion()}`]];
     }
     return a;
   };
