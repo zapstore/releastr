@@ -20,8 +20,7 @@ function App() {
 
   const releasePartialEvent = () => {
     const tags = [
-      ['d', `${appIdentifier()}-${releaseVersion()}`]
-      ['i', appIdentifier()],
+      ["i", appIdentifier()],
       ["title", appName()],
       ['version', releaseVersion()],
     ];
@@ -34,6 +33,9 @@ function App() {
     };
     if (artifactEvent()) {
       a.tags = [...tags, ['e', artifactEvent().id]];
+    }
+    if (appIdentifier() && releaseVersion()) {
+      a.tags = [...tags, ["d", `${appIdentifier()}@${releaseVersion()}`]];
     }
     return a;
   };
@@ -100,7 +102,6 @@ function App() {
         <h3>releastr</h3>
       </header>
 
-      <button onclick={publishRelease}>Fetch</button>
       <h3>Artifacts</h3>
 
       <div class={styles.part}>
@@ -108,7 +109,6 @@ function App() {
       </div>
 
       <Show when={!artifactEvent()}>
-        <span>https://github.com/MutinyWallet/mutiny-web/releases/download/v0.5.9/mutiny-wallet-fdroid-universal-v0.5.9.apk</span>
         <div class={styles.part}>
           Source URL: <input
             type="text"
@@ -137,12 +137,18 @@ function App() {
           />
         </div>
 
-        <h4>Partial event (id, pubkey, sig will be added when signing)</h4>
+        <h4>Partial event (id, pubkey, created_at, sig will be added when signing)</h4>
 
         <pre>
           <code innerHTML={JSON.stringify(artifactPartialEvent(), null, 2)}></code>
         </pre>
 
+        <Show when={!artifactButtonDisabled()}>
+          <p>Manually verify the hash before signing!<br/>
+            <code>curl -sL "{artifactUrl()}" -o - | shasum -a 2
+    56`</code>
+          </p>
+        </Show>
         <button class={styles.submit} disabled={artifactButtonDisabled()} onclick={signArtifact}>Sign artifact</button>
       </Show>
 
@@ -199,7 +205,7 @@ function App() {
           />
         </div>
 
-        <h4>Partial event (id, pubkey, sig will be added when signing)</h4>
+        <h4>Partial event (id, pubkey, created_at, sig will be added when signing)</h4>
 
         <pre>
           <code innerHTML={JSON.stringify(releasePartialEvent(), null, 2)}></code>
