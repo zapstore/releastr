@@ -109,6 +109,8 @@ function App() {
         <em>Only 1 artifact supported at the moment</em>
       </div>
 
+      <input type="checkbox" onchange={setArtifactTags({...artifactTags(), x: '1234'})} />
+
       <Show when={!artifactEvent()}>
         <div class={styles.part}>
           Source URL: <input
