@@ -109,8 +109,6 @@ function App() {
         <em>Only 1 artifact supported at the moment</em>
       </div>
 
-      <input type="checkbox" onchange={setArtifactTags({...artifactTags(), x: '1234'})} />
-
       <Show when={!artifactEvent()}>
         <div class={styles.part}>
           Source URL: <input
@@ -139,7 +137,10 @@ function App() {
             onInput={(e) => setArtifactRepository(e.target.value)}
           />
         </div>
-
+        
+        <div class={styles.part}>
+          <input type="checkbox" onchange={() => setArtifactTags({...artifactTags(), x: '1234'})} />
+        </div>
         <h4>Partial event (id, pubkey, created_at, sig will be added when signing)</h4>
 
         <pre>
