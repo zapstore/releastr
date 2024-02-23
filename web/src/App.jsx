@@ -139,7 +139,12 @@ function App() {
         </div>
         
         <div class={styles.part}>
-          <input type="checkbox" onchange={() => setArtifactTags({...artifactTags(), x: '1234'})} />
+          <input type="checkbox" onchange={() => {
+            const tags = artifactTags();
+            const idx = tags.findIndex((t) => t[0] == 'x');
+            tags.splice(idx, 1, [['x', '1234']]);
+            setArtifactTags(tags);
+          }} />
         </div>
         <h4>Partial event (id, pubkey, created_at, sig will be added when signing)</h4>
 
