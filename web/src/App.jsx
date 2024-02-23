@@ -142,7 +142,7 @@ function App() {
           <input type="checkbox" onchange={() => {
             const tags = artifactTags();
             const idx = tags.findIndex((t) => t[0] == 'x');
-            tags.splice(idx, 1, [['x', '1234']]);
+            tags.splice(idx, 1, ['x', '1234']);
             setArtifactTags(tags);
           }} />
         </div>
