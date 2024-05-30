@@ -1,0 +1,15 @@
+{
+  "name": "releastr-cli",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "nostr-tools": "^2.4.0",
+    "yaml": "^2.4.2"
+  }
+}

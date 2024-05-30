@@ -1,0 +1,235 @@
+zapstore:
+  github: zapstore/zapstore
+  npub: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
+  name: zap.store
+amethyst:
+  github: vitorpamplona/amethyst
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+amber:
+  github: greenart7c3/Amber
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  name: Amber
+  description: Amber is a nostr event signer for Android. It allows users to keep their nsec segregated in a single, dedicated app. The goal of Amber is to have your smartphone act as a NIP-46 signing device without any need for servers or additional hardware. "Private keys should be exposed to as few systems as possible as each system adds to the attack surface," as the rationale of said NIP states. In addition to native apps, Amber aims to support all current nostr web applications without requiring any extensions or web servers.
+mutiny:
+  github: mutinywallet/mutiny-web
+  npub: npub1mutnyacc9uc4t5mmxvpprwsauj5p2qxq95v4a9j0jxl8wnkfvuyque23vg
+0xchat:
+  github: 0xchat-app/0xchat-app-main
+  npub: npub1tm99pgz2lth724jeld6gzz6zv48zy6xp4n9xu5uqrwvx9km54qaqkkxn72
+primal:
+  github: PrimalHQ/primal-android-app
+  npub: npub12vkcxr0luzwp8e673v29eqjhrr7p9vqq8asav85swaepclllj09sylpugg
+btcmap:
+  github: teambtcmap/btcmap-android
+  npub: npub1864jglrrhv6alguwql9pqtmd5296nww5dpcewapmmcazk8vq4mks0tt2tq
+  name: BTC Map
+minibits:
+  github: minibits-cash/minibits_wallet
+  npub: npub1kvaln6tm0re4d99q9e4ma788wpvnw0jzkz595cljtfgwhldd75xsj9tkzv
+spring:
+  github: nostrband/nostr-universe
+  npub: npub1xdtducdnjerex88gkg2qk2atsdlqsyxqaag4h05jmcpyspqt30wscmntxy
+  name: Spring Browser
+simplex:
+  github: simplex-chat/simplex-chat
+  npub: npub1exv22uulqnmlluszc4yk92jhs2e5ajcs6mu3t00a6avzjcalj9csm7d828
+zeus:
+  github: ZeusLN/zeus
+  npub: npub1xnf02f60r9v0e5kty33a404dm79zr7z2eepyrk5gsq3m7pwvsz2sazlpr5
+phoenix:
+  github: acinq/phoenix
+  name: Phoenix Wallet
+protonmail:
+  github: protonmail/android-mail
+  name: Proton Mail
+innertune:
+  github: z-huang/InnerTune
+harmony:
+  github: anandnet/Harmony-Music
+  name: Harmony Music
+bluewallet:
+  github: bluewallet/bluewallet
+nutstash:
+  github: gandlafbtc/nutstash-wallet
+  npub: npub1cj6ndx5akfazux7f0vjl4fyx9k0ulf682p437fe03a9ndwqjm0tqj886t6
+aqua:
+  github: aquawallet/aqua-wallet
+  npub: npub1ajlrwgfj4yerhqf7ady03h7wmtk2qr3gs7h3sxcx83k05yld36sswpzx3q
+robosats:
+  github: robosats/robosats
+  npub: npub1p2psats79rypr8lpnl9t5qdekfp700x660qsgw284xvq4s09lqrqqk3m82
+  name: Robosats
+permission_pilot:
+  github: d4rken-org/permission-pilot
+ytdlnis:
+  github: deniscerri/ytdlnis
+  name: YTDLnis
+ntfy:
+  github: binwiederhier/ntfy-android
+  name: ntfy
+keepass:
+  github: Kunzisoft/KeePassDX
+foxrss:
+  github: 16arpi/Fox-RSS
+greenwallet:
+  github: Blockstream/green_android
+  npub: npub1jg552aulj07skd6e7y2hu0vl5g8nl5jvfw8jhn6jpjk0vjd0waksvl6n8n
+  name: Green Wallet
+ente:
+  github: ente-io/ente
+obsidian:
+  github: obsidianmd/obsidian-releases
+simplelogin:
+  github: simple-login/Simple-Login-Android
+deadhash:
+  github: CodeDead/DeadHash-android
+logseq:
+  github: logseq/logseq
+bitwarden:
+  github: bitwarden/mobile
+  name: Bitwarden
+voyage:
+  github: dluvian/voyage
+  npub: npub1useke4f9maul5nf67dj0m9sq6jcsmnjzzk4ycvldwl4qss35fvgqjdk5ks
+  name: Voyage
+nunchuk:
+  github: nunchuk-io/nunchuk-android
+  npub: npub1cvqlzvmjercdn0ypsmv8f7j9lge6ahsnueh5rparh53wuswftv4q49yjt3
+nostros:
+  github: koalasat/nostros
+  npub: npub1v3tgrwwsv7c6xckyhm5dmluc05jxd4yeqhpxew87chn0kua0tjzqc6yvjh
+mollyim:
+  github: mollyim/mollyim-android
+  name: Molly IM
+tubular:
+  github: polymorphicshade/Tubular
+fossify_notes:
+  github: FossifyOrg/Notes
+  name: Fossify Notes
+fossify_music_player:
+  github: FossifyOrg/Music-Player
+fossify_file_manager:
+  github: FossifyOrg/File-Manager
+fossify_phone:
+  github: FossifyOrg/Phone
+fossify_gallery:
+  github: FossifyOrg/Gallery
+fossify_voice_recorder:
+  github: FossifyOrg/Voice-Recorder
+fossify_contacts:
+  github: FossifyOrg/Contacts
+fossify_clock:
+  github: FossifyOrg/Clock
+fossify_calendar:
+  github: FossifyOrg/Calendar
+fossify_keyboard:
+  github: FossifyOrg/Keyboard
+localsend:
+  github: localsend/localsend
+blackhawky_clock:
+  github: BlackyHawky/Clock
+graphene_camera:
+  github: GrapheneOS/Camera
+birday:
+  github: m-i-n-a-r/birday
+  name: Birday
+yetcalc:
+  github: Yet-Zio/yetCalc
+opencalc:
+  github: Darkempire78/OpenCalc
+cromite:
+  github: uazo/cromite
+duckduckgo:
+  github: duckduckgo/Android
+  name: DuckDuckGo Browser
+privacy_qrscanner:
+  github: SecUSo/privacy-friendly-qr-scanner
+catima:
+  github: CatimaLoyalty/Android
+binaryeye:
+  github: markusfisch/BinaryEye
+autoclicker:
+  github: Nain57/Smart-AutoClicker
+homeassistant:
+  github: home-assistant/android
+easer:
+  github: renyuneyun/Easer
+kotatsu:
+  github: KotatsuApp/Kotatsu
+bangumi:
+  github: czy0729/Bangumi
+aniyomi:
+  github: aniyomiorg/aniyomi
+trackercontrol:
+  github: TrackerControl/tracker-control-android
+blockada:
+  github: blokadaorg/blokada
+adaway:
+  github: AdAway/AdAway
+citrine:
+  github: greenart7c3/Citrine
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  description: Citrine
+mysterium:
+  github: mysteriumnetwork/mysterium-vpn-mobile
+amnezia:
+  github: amnezia-vpn/amnezia-client
+ivpn:
+  github: ivpn/android-app
+wormhole_william:
+  github: psanford/wormhole-william-mobile
+termux:
+  github: termux/termux-app
+syncthing:
+  github: syncthing/syncthing-android
+protonvpn:
+  github: protonvpn/android-app
+  name: Proton VPN
+openboard:
+  github: openboard-team/openboard
+  name: OpenBoard
+nekogram:
+  github: Nekogram/Nekogram
+fedi:
+  github: fedibtc/fedi-alpha
+  npub: npub1uq70uqgas9pyhds2zt57kr9se8rg3s68ztphjnq82ts8rzeknmeql7u0c2
+material_files:
+  github: zhanghai/MaterialFiles
+heliboard:
+  github: Helium314/HeliBoard
+breezy_weather:
+  github: breezy-weather/breezy-weather
+  name: Breezy Weather
+obtainium:
+  github: imranr98/obtainium
+organicmaps:
+  github: organicmaps/organicmaps
+  name: Organic Maps
+freerse:
+  github: Freerse/Freerse
+  npub: npub129z0az8lgffuvsywazww07hx75qas3veh3dazsq56z8y39v86khs2uy5gm
+phiola:
+  github: stsaz/phiola
+noice:
+  github: trynoice/android-app
+  name: Noice
+moonlight:
+  github: moonlight-stream/moonlight-android
+exodus_privacy:
+  github: Exodus-Privacy/exodus-android-app
+nekox:
+  github: NekoX-Dev/NekoX
+oxen:
+  github: oxen-io/session-android
+megalodon:
+  github: sk22/megalodon
+mastodon:
+  github: mastodon/mastodon-android
+jellyfin:
+  github: jellyfin/jellyfin-android
+newpipe:
+  github: TeamNewPipe/NewPipe
+enuts:
+  github: cashubtc/eNuts
+  npub: npub1dx5q2el8nd4eh3eg9t2e25fd7zuqg7zxz6ldkc3uzgh66ss2yc6st288sj
+  description: eNuts is a privacy-focused custodial wallet that not only allows you to perform lightning transactions but also private Ecash transactions using the Cashu protocol.\n It comes with a basic Nostr integration because we believe Ecash and Nostr are a match made in heaven. Ecash combined with Nostr's inherent resistance to censorship creates a potent combination.
