@@ -68,6 +68,17 @@ for (const args of Object.values(parse(yaml))) {
   const asset = latestReleaseJson.assets.find(a => a.name == bestApkAssetName);
   console.log('- Found best APK', asset.name);
 
+  // Check if we already processed this release
+  const metadataOnRelay = await querySync(relay, { 'kinds': [1063], 'search': asset.browser_download_url });
+  // Search is full-text (not exact) so we double-check
+  const metadataOnRelayCheck = metadataOnRelay.find(m => m.browser_download_url == asset.browser_download_url);
+  if (metadataOnRelayCheck) {
+    if (!overwrite) {
+      console.log(`Metadata for latest ${args.github} release already in relay, aborting`);
+      continue;
+    }
+  }
+
   // APK
   const apkUrl = asset.browser_download_url;
   const tempApkPath = join(blossomDir, basename(apkUrl));
@@ -76,8 +87,8 @@ for (const args of Object.values(parse(yaml))) {
 
   console.log('Processing APK at', apkPath);
 
-  // Hash in relay means we already processed this release
-  const filesOnRelay = await querySync(relay, { '#x': [apkHash] });
+  // Now with the hash, check again for existence
+  const filesOnRelay = await querySync(relay, { 'kinds': [1063], '#x': [apkHash] });
   if (filesOnRelay.length > 0) {
     if (!overwrite) {
       console.log(`Hash for latest ${args.github} release already in relay, aborting`);
@@ -235,28 +246,33 @@ for (const args of Object.values(parse(yaml))) {
 
   // 1063
 
-  const metadata = {
-    kind: 1063,
-    content: `${name} ${apkVersion || latestReleaseJson.tag_name}`,
-    created_at: Date.parse(latestReleaseJson.created_at) / 1000,
-    tags: [
-      ['url', apkUrl],
-      ['m', 'application/vnd.android.package-archive'],
-      ['x', apkHash],
-      ['size', apkSize],
-      ...(apkVersion ? [['version', apkVersion]] : []),
-      ...(apkVersionCode ? [['version_code', apkVersionCode]] : []),
-      ...(minSdkVersion ? [['min_sdk_version', minSdkVersion]] : []),
-      ...(targetSdkVersion ? [['target_sdk_version', targetSdkVersion]] : []),
-      ...sigHashes.map(h => ['apk_signature_hash', h]),
-      ...archs.map(t => ['arch', t]),
-      ['repository', `https://github.com/${args.github}`],
-      ...(iconHashName ? [['image', `https://cdn.zap.store/${iconHashName}`]] : []),
-      ...(pubkey ? [['p', pubkey], ['zap', pubkey, '1']] : [])
-    ]
-  };
+  let metadataEvent;
 
-  const metadataEvent = finalizeEvent(metadata, sk);
+  // Do not submit again a file with same hash
+  if (filesOnRelay.length === 0) {
+    const metadata = {
+      kind: 1063,
+      content: `${name} ${apkVersion || latestReleaseJson.tag_name}`,
+      created_at: Date.parse(latestReleaseJson.created_at) / 1000,
+      tags: [
+        ['url', apkUrl],
+        ['m', 'application/vnd.android.package-archive'],
+        ['x', apkHash],
+        ['size', apkSize],
+        ...(apkVersion ? [['version', apkVersion]] : []),
+        ...(apkVersionCode ? [['version_code', apkVersionCode]] : []),
+        ...(minSdkVersion ? [['min_sdk_version', minSdkVersion]] : []),
+        ...(targetSdkVersion ? [['target_sdk_version', targetSdkVersion]] : []),
+        ...sigHashes.map(h => ['apk_signature_hash', h]),
+        ...archs.map(t => ['arch', t]),
+        ['repository', `https://github.com/${args.github}`],
+        ...(iconHashName ? [['image', `https://cdn.zap.store/${iconHashName}`]] : []),
+        ...(pubkey ? [['p', pubkey], ['zap', pubkey, '1']] : [])
+      ]
+    };
+
+    metadataEvent = finalizeEvent(metadata, sk);
+  }
 
   // 30063
 
@@ -276,12 +292,14 @@ for (const args of Object.values(parse(yaml))) {
 
   console.log('Publishing to', DEFAULT_RELAY, '...');
 
-  try {
-    const r1 = await relay.publish(metadataEvent);
-    console.log('kind 1063 published', metadataEvent.id, r1);
-  } catch (e) {
-    console.error('kind 1063 not published', metadataEvent.id);
-    console.error(e.message);
+  if (metadataEvent) {
+    try {
+      const r1 = await relay.publish(metadataEvent);
+      console.log('kind 1063 published', metadataEvent.id, r1);
+    } catch (e) {
+      console.error('kind 1063 not published', metadataEvent.id);
+      console.error(e.message);
+    }
   }
 
   try {
