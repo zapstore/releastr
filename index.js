@@ -293,7 +293,7 @@ for (const args of appValues) {
     tags: [
       ['d', `${appIdentifier}@${latestReleaseJson.tag_name}`],
       ['url', latestReleaseJson.html_url],
-      ['e', metadata.id],
+      ['e', metadataEvent.id],
       ['a', `${appEvent.kind}:${appEvent.pubkey}:${appIdentifier}`],
     ]
   };
