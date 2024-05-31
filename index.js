@@ -11,6 +11,7 @@ const yaml = await Bun.file(`${import.meta.dir}/apps.yaml`).text();
 const sk = Bun.env.SK;
 const blossomDir = Bun.env.BLOSSOM_DIR;
 const overwrite = Bun.env.OVERWRITE;
+const onlyProcess = Bun.env.ONLY_PROCESS;
 
 if (!sk || !blossomDir) {
   console.error('Both SK and BLOSSOM_DIR must be provided');
@@ -24,8 +25,17 @@ const relay = await Relay.connect(DEFAULT_RELAY);
 
 const headers = Bun.env.GITHUB_TOKEN ? { Authorization: `Bearer ${Bun.env.GITHUB_TOKEN}` } : {};
 
-for (const args of Object.values(parse(yaml))) {
+const apps = parse(yaml);
+let appValues = Object.values(apps);
 
+if (onlyProcess) {
+  const key = Object.keys(apps).find(k => k == onlyProcess);
+  if (key) {
+    appValues = [apps[key]];
+  }
+}
+
+for (const args of appValues) {
   console.log('- Processing repository', args.github, '...');
 
   // Github

@@ -233,3 +233,10 @@ enuts:
   github: cashubtc/eNuts
   npub: npub1dx5q2el8nd4eh3eg9t2e25fd7zuqg7zxz6ldkc3uzgh66ss2yc6st288sj
   description: eNuts is a privacy-focused custodial wallet that not only allows you to perform lightning transactions but also private Ecash transactions using the Cashu protocol.\n It comes with a basic Nostr integration because we believe Ecash and Nostr are a match made in heaven. Ecash combined with Nostr's inherent resistance to censorship creates a potent combination.
+bitkey:
+  github: proto-at-block/bitkey
+  npub: npub1tcnvkw8fu29zspw54tuhfrk0tkzn6qdupmc45slt4zmase3dzqask6ctu0
+  name: Bitkey
+anysoftkeyboard:
+  github: AnySoftKeyboard/AnySoftKeyboard
+  name: AnySoftKeyboard
