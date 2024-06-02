@@ -240,3 +240,116 @@ bitkey:
 anysoftkeyboard:
   github: AnySoftKeyboard/AnySoftKeyboard
   name: AnySoftKeyboard
+lawnchair:
+  github: lawnchairlauncher/lawnchair
+  name: Lawnchair
+immich:
+  github: immich-app/immich
+  name: Immich
+mihon:
+  github: mihonapp/mihon
+  name: Mihon
+titanius:
+  github: dsolonenko/titanius-launcher
+  name: Titanius Launcher
+davx5:
+  github: bitfireAT/davx5-ose
+  name: DAVx⁵
+icsx5:
+  github: bitfireAT/icsx5
+  name: ICSx⁵
+jtxboard:
+  github: TechbeeAT/jtxBoard
+  name: jtx Board
+pobya:
+  github: ICTrust/PObY-A
+  name: PObY-A
+adguard:
+  github: AdguardTeam/AdguardForAndroid
+  name: AdGuard
+saber:
+  github: adil192/saber
+  name: Saber
+hail:
+  github: aistra0528/Hail
+  name: Hail
+keyguard:
+  github: AChep/keyguard-app
+  name: Keyguard
+aegis:
+  github: beemdevelopment/aegis
+  name: Aegis
+thunderbird:
+  github: thunderbird/thunderbird-android
+  name: K-9 Mail
+meshtastic:
+  github: meshtastic/Meshtastic-Android
+  name: Meshtastic
+cakewallet:
+  github: cake-tech/cake_wallet
+  name: Cake Wallet
+nextcloud:
+  github: nextcloud/android
+  name: Nextcloud
+winlator:
+  github: brunodev85/winlator
+  name: Winlator
+xmanager:
+  github: Team-xManager/xManager
+  name: xManager
+vespucci:
+  github: MarcusWolschon/osmeditor4android
+  name: Vespucci
+odintools:
+  github: langerhans/OdinTools
+  name: Odin Tools
+ffupdater:
+  github: Tobi823/ffupdater
+  name: FFUpdater
+aves:
+  github: deckerst/aves
+  name: Aves
+florisboard:
+  github: florisboard/florisboard
+  name: FlorisBoard
+appverifier:
+  github: soupslurpr/AppVerifier
+  name: AppVerifier
+fairemail:
+  github: M66B/FairEmail
+  name: FairEmail
+element:
+  github: element-hq/element-android
+  name: Element
+keymapper:
+  github: keymapperorg/KeyMapper
+  name: Key Mapper
+readyou:
+  github: ashinch/readyou
+  name: Read You
+infinity_reddit:
+  github: Docile-Alligator/Infinity-For-Reddit
+  name: Infinity for Reddit
+markor:
+  github: gsantner/markor
+  name: Markor
+cryptomator:
+  github: cryptomator/android
+  name: Cryptomator
+sonic3air:
+  github: Eukaryot/sonic3air
+  name: Sonic 3 A.I.R.
+floccus:
+  github: floccusaddon/floccus
+koreader:
+  github: koreader/koreader
+  name: KOReader
+libretorrent:
+  github: proninyaroslav/libretorrent
+  name: LibreTorrent
+transistor:
+  github: y20k/transistor
+  name: Transistor
+imagetoolbox:
+  github: T8RIN/ImageToolbox
+  name: Image Toolbox
