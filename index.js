@@ -35,6 +35,8 @@ if (onlyProcess) {
   }
 }
 
+console.log(`Loading ${appValues.length} apps...`);
+
 for (const args of appValues) {
   console.log('- Processing repository', args.github, '...');
 
@@ -198,20 +200,24 @@ for (const args of appValues) {
     }
   } else {
     if (!iconPath) {
-      const iconPointer = await $`cat $MANIFEST | xq -q 'manifest application' -a 'android:icon'`.env({ MANIFEST: `${apkFolder}/AndroidManifest.xml` }).text();
-      if (iconPointer.startsWith('@mipmap')) {
-        const mipmapFolders = await $`ls $FOLDER/res | grep mipmap`.env({ FOLDER: apkFolder }).text();
-        const bestMipmapFolder = selectBestString(mipmapFolders.trim().split('\n'), [
-          [/xxxhdpi/, 5],
-          [/xxhdpi/, 4],
-          [/xhdpi/, 3],
-          [/hdpi/, 2],
-          [/mdpi/, 1],
-        ]);
-        const iconBasename = iconPointer.replace('@mipmap/', '').trim();
-        const iconFolder = join(blossomDir, apkFolder, 'res', bestMipmapFolder);
-        const iconName = (await $`ls ${iconBasename}.*'`.cwd(iconFolder).text()).trim();
-        iconPath = join(iconFolder, iconName);
+      try {
+        const iconPointer = await $`cat $MANIFEST | xq -q 'manifest application' -a 'android:icon'`.env({ MANIFEST: `${apkFolder}/AndroidManifest.xml` }).text();
+        if (iconPointer.startsWith('@mipmap')) {
+          const mipmapFolders = await $`ls $FOLDER/res | grep mipmap`.env({ FOLDER: apkFolder }).text();
+          const bestMipmapFolder = selectBestString(mipmapFolders.trim().split('\n'), [
+            [/xxxhdpi/, 5],
+            [/xxhdpi/, 4],
+            [/xhdpi/, 3],
+            [/hdpi/, 2],
+            [/mdpi/, 1],
+          ]);
+          const iconBasename = iconPointer.replace('@mipmap/', '').trim();
+          const iconFolder = join(blossomDir, apkFolder, 'res', bestMipmapFolder);
+          const _iconName = await $`ls ${iconBasename}.*'`.cwd(iconFolder).text();
+          iconPath = join(iconFolder, _iconName.trim());
+        }
+      } catch (e) {
+        // ignore
       }
     }
   }

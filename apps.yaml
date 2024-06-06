@@ -353,3 +353,6 @@ transistor:
 imagetoolbox:
   github: T8RIN/ImageToolbox
   name: Image Toolbox
+sockstun:
+  github: heiher/sockstun
+  name: SocksTun
