@@ -356,3 +356,8 @@ imagetoolbox:
 sockstun:
   github: heiher/sockstun
   name: SocksTun
+satworth:
+  github: 0ceanslim/satworth
+  npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  name: SatWorth
+  description: How many sats in a dollar? Get real-time Bitcoin prices in fiat, effortlessly convert fiat to satoshis, and calculate Bitcoin values with ease.
