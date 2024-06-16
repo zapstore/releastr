@@ -364,3 +364,6 @@ windscribe:
 volt:
   github: Zero-1729/volt
   name: Volt Wallet
+mullvad:
+  github: mullvad/mullvadvpn-app
+  name: Mullvad VPN
