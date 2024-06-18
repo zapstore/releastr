@@ -367,3 +367,5 @@ volt:
 mullvad:
   github: mullvad/mullvadvpn-app
   name: Mullvad VPN
+bravenewpipe:
+  github: bravenewpipe/NewPipe
