@@ -369,3 +369,7 @@ mullvad:
   name: Mullvad VPN
 bravenewpipe:
   github: bravenewpipe/NewPipe
+stackernews:
+  github: felipebueno/stacker_news
+  name: Stacker News
+  npub: npub1w9633rznen8qe056xfx97kqyzvv6faygsfnv4cwccuhyucuz5ukqc29am0
