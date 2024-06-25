@@ -373,3 +373,9 @@ stackernews:
   github: felipebueno/stacker_news
   name: Stacker News
   npub: npub1w9633rznen8qe056xfx97kqyzvv6faygsfnv4cwccuhyucuz5ukqc29am0
+blink:
+  name: Blink
+  github: GaloyMoney/blink-mobile
+  npub: npub13ljnkd633c7maxatymv3y2fqq8vt3qk7j3tt0vytv90eztwgha9qmfcfhw
+uhabits:
+  github: isoron/uhabits
