@@ -1,5 +1,6 @@
 import { $ } from "bun";
 import { extname } from "bun:path";
+import { Relay } from 'nostr-tools/relay';
 
 export const renameToHash = async (name) => {
   const ext = extname(name);
@@ -66,4 +67,14 @@ export const querySync = async (relay, filter) => {
       },
     });
   });
+};
+
+export const withRelay = async (relayUrl, fn) => {
+  const relay = await Relay.connect(relayUrl);
+  try {
+    await fn(relay);
+  } finally {
+    console.log('Done! Closing relay...');
+    await relay.close();
+  }
 };
