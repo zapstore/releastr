@@ -379,3 +379,11 @@ blink:
   npub: npub13ljnkd633c7maxatymv3y2fqq8vt3qk7j3tt0vytv90eztwgha9qmfcfhw
 uhabits:
   github: isoron/uhabits
+openvideoeditor:
+  github: devhyper/open-video-editor
+superimage:
+  github: Lucchetto/SuperImage
+wavlake:
+  name: Wavlake
+  npub: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
+  github: wavlake/mobile
