@@ -83,7 +83,7 @@ for (const args of appValues) {
   // Check if we already processed this release
   const metadataOnRelay = await querySync(relay, { 'kinds': [1063], 'search': asset.browser_download_url });
   // Search is full-text (not exact) so we double-check
-  const metadataOnRelayCheck = metadataOnRelay.find(m => m.browser_download_url == asset.browser_download_url);
+  const metadataOnRelayCheck = metadataOnRelay.find(m => m.tags.find(t => t[0] == 'url')[1] == asset.browser_download_url);
   if (metadataOnRelayCheck) {
     if (!overwrite) {
       console.log(`Metadata for latest ${args.github} release already in relay, aborting`);
