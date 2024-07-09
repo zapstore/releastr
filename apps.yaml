@@ -387,3 +387,19 @@ wavlake:
   name: Wavlake
   npub: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
   github: wavlake/mobile
+blixt-wallet:
+  name: Blixt-Wallet
+  npub: npub1v4v57fu60zvc9d2uq23cey4fnwvxlzga9q2vta2n6xalu03rs57s0mxwu8
+  github: hsjoberg/blixt-wallet
+appmanager:
+  github: MuntashirAkon/AppManager
+clearclipboard:
+  github: amnesica/ClearClipboard
+cpu-info:
+  github: kamgurgul/cpu-info
+mpv-android:
+  github: mpv-android/mpv-android
+orbot:
+  github: guardianproject/orbot
+pcapdroid:
+  github: emanuele-f/PCAPdroid
