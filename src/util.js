@@ -1,21 +1,25 @@
 import { $ } from "bun";
-import { extname } from "bun:path";
+import { join, extname } from "bun:path";
 import { Relay } from 'nostr-tools/relay';
+import chalk from 'chalk';
 
-export const renameToHash = async (name) => {
-  const ext = extname(name);
-  const _hash = await $`cat $NAME | shasum -a 256 | head -c 64`.env({ NAME: name }).text();
+const BLOSSOM_DIR = Bun.env.BLOSSOM_DIR ?? '/tmp';
+
+export const renameToHash = async (path) => {
+  const ext = extname(path);
+  const _hash = await $`cat $NAME | shasum -a 256 | head -c 64`.env({ NAME: path }).text();
   const hash = _hash.trim();
   let hashName = `${hash}${ext}`;
   if (hash === hashName) {
-    const _mimeType = await $`file -b --mime-type $NAME`.env({ NAME: name }).text();
+    const _mimeType = await $`file -b --mime-type $NAME`.env({ NAME: path }).text();
     const [_t1, _t2] = _mimeType.trim().split('/');
     if (_t1.trim() == 'image') {
       hashName = `${hash}.${_t2}`;
     }
   }
-  await $`mv $SRC $DEST`.env({ SRC: name, DEST: hashName }).quiet();
-  return [hash, hashName];
+
+  await $`mv $SRC $DEST`.env({ SRC: path, DEST: join(BLOSSOM_DIR, hashName) }).quiet();
+  return [hash, join(BLOSSOM_DIR, hashName)];
 };
 
 export const selectBestString = (strings, priorities) => {
@@ -69,12 +73,11 @@ export const querySync = async (relay, filter) => {
   });
 };
 
-export const withRelay = async (relayUrl, fn) => {
+export const doWithRelay = async (relayUrl, fn) => {
   const relay = await Relay.connect(relayUrl);
   try {
     await fn(relay);
   } finally {
-    console.log('Done! Closing relay...');
     await relay.close();
   }
 };

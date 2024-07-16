@@ -1,8 +1,17 @@
-import { join, basename, extname } from "bun:path";
+import { join, basename } from "bun:path";
 import { renameToHash } from './util';
+import { $ } from "bun";
+import ora from 'ora';
 
-export const extractFromStore = async () => {
-  const url = `https://play.google.com/store/apps/details?id=${appIdentifier}`;
+const BLOSSOM_DIR = Bun.env.BLOSSOM_DIR ?? '/tmp';
+
+// TODO REMOVE XQ DEPENDENCY
+
+export const parseFromPlayStore = async (identifier) => {
+  if (!identifier) return;
+  const spinner = ora('Fetching metadata from Google Play Store...').start();
+
+  const url = `https://play.google.com/store/apps/details?id=${identifier}`;
 
   const playStoreHTML = Buffer.alloc(1.5 * 1024 * 1024);
   await $`curl -s $URL > ${playStoreHTML}`.env({ URL: url });
@@ -11,42 +20,43 @@ export const extractFromStore = async () => {
 
   const imageHashNames = [];
 
-  if (playStoreAvailable) {
-    const _name = await $`cat < ${playStoreHTML} | xq -q 'h1[itemprop=name]'`.text();
-    appName ||= _name.trim();
-    console.log('- Found name', appName);
+  if (!playStoreAvailable) {
+    spinner.fail();
+    return {};
+  }
 
-    const _description = await $`cat < ${playStoreHTML} | xq -n -q 'div[data-g-id=description]' | pandoc -f html --wrap=none -t markdown | sed '1d;$d''`.text();
-    appDescription ||= _description.replaceAll('\\\n', '\n');
+  const _name = await $`cat < ${playStoreHTML} | xq -q 'h1[itemprop=name]'`.text();
+  let appName = _name.trim();
 
-    const _iconUrls = await $`cat < ${playStoreHTML} | xq -q 'img[itemprop=image]' -a 'src'`.text();
-    const iconUrl = _iconUrls.trim().split('\n')[0];
+  const _description = await $`cat < ${playStoreHTML} | xq -n -q 'div[data-g-id=description]' | pandoc -f html --wrap=none -t markdown | sed '1d;$d''`.text();
+  let appDescription = _description.replaceAll('\\\n', '\n');
 
-    const _imageUrls = await $`cat < ${playStoreHTML} | xq -q 'img[data-screenshot-index]' -a 'src'`.text();
-    const imageUrls = _imageUrls.trim().split('\n');
+  const _iconUrls = await $`cat < ${playStoreHTML} | xq -q 'img[itemprop=image]' -a 'src'`.text();
+  const iconUrl = _iconUrls.trim().split('\n')[0];
 
-    for (const imageUrl of imageUrls) {
-      if (imageUrl.trim()) {
-        const tempImagePath = join(blossomDir, basename(imageUrl));
-        await Bun.write(tempImagePath, await fetch(imageUrl));
-        const [_, imageHashName] = await renameToHash(tempImagePath);
-        imageHashNames.push(imageHashName);
-      }
-    }
-    console.log('- Found images', imageHashNames.join(', '));
+  const _imageUrls = await $`cat < ${playStoreHTML} | xq -q 'img[data-screenshot-index]' -a 'src'`.text();
+  const imageUrls = _imageUrls.trim().split('\n');
 
-    if (!iconPath && iconUrl.trim()) {
-      iconPath = join(blossomDir, basename(iconUrl));
-      await Bun.write(iconPath, await fetch(iconUrl));
-    }
-    // TODO set appIcon here?
-    appName ||= repoJson.name || args.github;
-    appDescription ||= repoJson.description || "";
-    // TODO check appIcon, convert svg to png
-    const [_, iconHashName] = iconPath ? await renameToHash(iconPath) : [undefined, undefined];
-    if (iconHashName) {
-      console.log('- Found icon', iconHashName);
+  for (const imageUrl of imageUrls) {
+    if (imageUrl.trim()) {
+      const tempImagePath = join(BLOSSOM_DIR, basename(imageUrl));
+      await Bun.write(tempImagePath, await fetch(imageUrl));
+      const [_, imageHashName] = await renameToHash(tempImagePath);
+      imageHashNames.push(imageHashName);
     }
   }
 
+  spinner.succeed('Fetched metadata from Google Play Store');
+
+  // if (!iconPath && iconUrl.trim()) {
+  //   iconPath = join(BLOSSOM_DIR, basename(iconUrl));
+  //   await Bun.write(iconPath, await fetch(iconUrl));
+  // }
+
+  return {
+    name: appName,
+    description: appDescription,
+    // icon: iconPath,
+    images: imageHashNames,
+  };
 };

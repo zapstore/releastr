@@ -1,8 +1,9 @@
 # For use with https://github.com/zapstore/releastr
-# barcodescanner:
-#   gitlab: Atharok/BarcodeScanner
 
-zapstore:
-  github: zapstore/zapstore
-  npub: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
-  name: zap.store
+amber:
+  android:
+    identifier: com.greenart7c3.nostrsigner
+    name: Amber
+    npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+    description: Amber is a nostr event signer for Android. It allows users to keep their nsec segregated in a single, dedicated app. The goal of Amber is to have your smartphone act as a NIP-46 signing device without any need for servers or additional hardware. "Private keys should be exposed to as few systems as possible as each system adds to the attack surface," as the rationale of said NIP states. In addition to native apps, Amber aims to support all current nostr web applications without requiring any extensions or web servers.
+    apkRegex: amber-free-arm64-v8a
