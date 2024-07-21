@@ -123,7 +123,8 @@ for (const args of appValues) {
     // if lib/ is not present, leave default and do nothing else
   }
   if (archs.length === 0) {
-    throw 'No archs';
+    console.log('No architectures found');
+    continue;
   }
 
   const _sigHashes = await $`apksigner verify --print-certs $APK | grep SHA-256`.env({ APK: basename(apkPath) }).text();
