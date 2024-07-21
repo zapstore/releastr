@@ -388,7 +388,7 @@ wavlake:
   npub: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
   github: wavlake/mobile
 blixt-wallet:
-  name: Blixt-Wallet
+  name: Blixt Wallet
   npub: npub1v4v57fu60zvc9d2uq23cey4fnwvxlzga9q2vta2n6xalu03rs57s0mxwu8
   github: hsjoberg/blixt-wallet
 appmanager:
@@ -403,3 +403,17 @@ orbot:
   github: guardianproject/orbot
 pcapdroid:
   github: emanuele-f/PCAPdroid
+holesail:
+  name: Holesail
+  npub: npub1h5t3asu90f2x48rxtcqkjvwhza7m6kngs7vjyanx8xqyswc6es2s4645z5
+  github: holesail/holesail
+breez:
+  name: Breez
+  npub: npub1ey6qdmvzcgcsr883m9nspzz0mm037l26xtardzcskfsvc6gc7jssm9szvp
+  github: breez/breezmobile	
+blitz:
+  name: Blitz Wallet
+  github: BlakeKaufman/BlitzWallet
+orgzly:
+  name: Orgzly Revived
+  github: orgzly-revived/orgzly-android-revived
