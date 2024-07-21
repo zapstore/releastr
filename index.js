@@ -115,12 +115,15 @@ for (const args of appValues) {
   await $`rm -fr $FOLDER'`.env({ FOLDER: apkFolder }).text();
   await $`apktool d $APK'`.env({ APK: basename(apkPath) }).quiet();
 
-  let archs = ['arm64-v8a'];
+  let archs = [];
   try {
     const _archs = await $`ls $FOLDER/lib`.env({ FOLDER: apkFolder }).text();
     archs = _archs.trim().split('\n');
   } catch (_) {
     // if lib/ is not present, leave default and do nothing else
+  }
+  if (archs.length === 0) {
+    throw 'No archs';
   }
 
   const _sigHashes = await $`apksigner verify --print-certs $APK | grep SHA-256`.env({ APK: basename(apkPath) }).text();
@@ -255,6 +258,7 @@ for (const args of appValues) {
       ...(stars !== undefined ? [['github_stars', String(stars)]] : []),
       ...(forks !== undefined ? [['github_forks', String(forks)]] : []),
       ...(license ? [['license', license]] : []),
+      ...archs.map(t => ['f', `android-${t}`]), // new platform tag
     ]
   };
 
@@ -281,6 +285,7 @@ for (const args of appValues) {
         ...(targetSdkVersion ? [['target_sdk_version', targetSdkVersion]] : []),
         ...sigHashes.map(h => ['apk_signature_hash', h]),
         ...archs.map(t => ['arch', t]),
+        ...archs.map(t => ['f', `android-${t}`]), // new platform tag
         ['repository', `https://github.com/${args.github}`],
         ...(iconHashName ? [['image', `https://cdn.zap.store/${iconHashName}`]] : []),
         ...(pubkey ? [['p', pubkey], ['zap', pubkey, '1']] : [])
